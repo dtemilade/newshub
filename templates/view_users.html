@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users</title>
+    <!-- My CSS script -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">VIew All Users</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/news">News</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+				<th>Fullname</th>
+                <th>Birthdate</th>
+                <th>Address</th>
+                <th>Telephone</th>
+				<th>Email</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+					<td>{{ user.fullname }}</td>
+                    <td>{{ user.birthdate }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.telephone }}</td>
+					<td>{{ user.email }}</td>
+                    <td>{{ user.gender }}</td>
+                    <td><a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- My JS script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <!-- My CSS script -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">Update Profile</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/logout">Logout</a></li>					
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="" method="post">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" value="{{ user.username }}"><br>
+        <label for="fullname">Fullname:</label><br>
+        <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+        <label for="birthdate">Birthdate:</label><br>
+        <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}"><br>
+        <label for="address">Address:</label><br>
+        <input type="text" id="address" name="address" value="{{ user.address }}"><br>
+        <label for="telephone">Telephone:</label><br>
+        <input type="tel" id="telephone" name="telephone" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" value="{{ user.telephone }}"><br>
+        <label for="gender">Gender:</label><br>
+        <select id="gender" name="gender">
+            <option value="male" {% if user.gender == 'male' %} selected {% endif %}>Male</option>
+            <option value="female" {% if user.gender == 'female' %} selected {% endif %}>Female</option>
+            <option value="other" {% if user.gender == 'other' %} selected {% endif %}>Other</option>
+        </select><br>
+        <button type="submit">Update</button>
+    </form>
+    <!-- My JS script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- My CSS script -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">Login</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/register">Register</a></li>					
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+        <section class="hero">
+            <div class="hero-content">
+				<h1>Login to access personalized content.</h1>
+            </div>
+        </section>
+    <form action="{{ url_for('login') }}" method="POST">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+        <section class="hero">
+            <div class="hero-content">
+				<a href="{{ url_for('reset_password') }}">Forgot your password?</a>
+				<p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+            </div>
+        </section>
+
+    <!-- My JS script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

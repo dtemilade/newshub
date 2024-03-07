@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <!-- My CSS script -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+        <section class="hero">
+            <div class="hero-content">
+				<h1>Latest News Headlines</h1>
+				<p>Welcome, {{ current_user.username }}!</p>
+				<a href="{{ url_for('logout') }}">Logout</a>
+				<a href="{{ url_for('home') }}">GoToHome</a>
+				<a href="{{ url_for('profile', user_id=current_user.id) }}">My Profile</a>
+            </div>
+        </section>
+    <ul>
+        {% for headline in headlines %}
+            <li>
+                <h2>{{ headline.title }}</h2>
+                <p>{{ headline.description }}</p>
+                <p>Source: {{ headline.source.name }}</p>
+                <p>Published At: {{ headline.publishedAt }}</p>
+                <a href="{{ headline.url }}" target="_blank">Read More</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <!-- My JS script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>

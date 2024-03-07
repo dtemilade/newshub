@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users - Access Restricted</title>
+    <!-- My CSS script -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">Admin ONLY</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/news">News</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+        <section class="hero">
+            <div class="hero-content">
+				<h1>View Users - Access Restricted</h1>
+				<p>This page is restricted to administrators only!.</p>
+            </div>
+        </section>
+
+    <form action="" method="POST">
+        <label for="del_password">Enter Admin Password:</label><br>
+        <input type="password" id="del_password" name="del_password"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <!-- My JS script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

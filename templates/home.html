@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsHub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">
+                    <a href="/">
+                        <img src="static/images/img_0.png" alt="NewsHub">
+                    </a>
+					<p>Your top-notch news arena.</p>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/view_users">View Users</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+		<section class="hero">
+			<div class="hero-content">
+				<div class="image">
+					<img src="static/images/img_1.jpeg" alt="Welcome">
+				</div>
+				<div class="text">
+					<h1>Welcome to Our Site</h1>
+					<p>Discover the latest news and updates!</p>
+				</div>
+			</div>
+		</section>
+
+
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <h2>Login</h2>
+                    <p>Login to access personalized content.</p>
+                    <a href="/login">Login</a>
+                </div>
+                <div class="feature">
+                    <h2>Register</h2>
+                    <p>Create an account to enjoy our services.</p>
+                    <a href="/register">Register</a>
+                </div>
+                <div class="feature">
+                    <h2>News</h2>
+                    <p>Stay updated with the latest news headlines.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section class="hero">
+            <div class="hero-content">
+                <p><br></p>
+				<h3>Positive updates from distant sources are akin to refreshing water for those yearning for it.</h>
+				<p><br>&copy; 2024 NewsHub. All rights reserved.</p>
+            </div>
+        </section>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
