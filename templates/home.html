@@ -21,6 +21,9 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/news">News</a></li>
                     <li><a href="/view_users">View Users</a></li>
+					<li><a href="https://github.com/dtemilade/newshub" target="_blank" rel="noopener noreferrer">
+						<input type="submit" value="DeployedPage">
+					</a></li>
                 </ul>
             </div>
         </nav>
@@ -29,12 +32,13 @@
     <main>
 		<section class="hero">
 			<div class="hero-content">
-				<div class="image">
-					<img src="static/images/img_1.jpeg" alt="Welcome">
-				</div>
 				<div class="text">
-					<h1>Welcome to Our Site</h1>
-					<p>Discover the latest news and updates!</p>
+					<h7>NewsHub</h7>
+					<h1>The best way to get news feed on the go!</h1>
+				</div>
+				<div class="image">
+					<img src="static/images/img_2.jpeg" alt="Welcome">
+					<h2>Experience the ultimate news on the fly! Dive into the latest updates, capturing the <br>pulse of the nation. Unleash a whirlwind of information as we bring you the <br>hottest news of diverse categories. Stay connected, stay informed – <br>your go-to destination for a dynamic news experience!</h2>
 				</div>
 			</div>
 		</section>
@@ -43,32 +47,64 @@
         <section class="features">
             <div class="container">
                 <div class="feature">
+				<div class="image">
+					<img src="static/images/img_1.jpeg" alt="Login">
+				</div>
                     <h2>Login</h2>
                     <p>Login to access personalized content.</p>
-                    <a href="/login">Login</a>
                 </div>
                 <div class="feature">
+				<div class="image">
+					<img src="static/images/img_3.jpeg" alt="Register">
+				</div>
                     <h2>Register</h2>
                     <p>Create an account to enjoy our services.</p>
-                    <a href="/register">Register</a>
                 </div>
                 <div class="feature">
+				<div class="image">
+					<img src="static/images/img_4.jpeg" alt="News">
+				</div>
                     <h2>News</h2>
                     <p>Stay updated with the latest news headlines.</p>
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <section class="hero">
-            <div class="hero-content">
-                <p><br></p>
-				<h3>Positive updates from distant sources are akin to refreshing water for those yearning for it.</h>
-				<p><br>&copy; 2024 NewsHub. All rights reserved.</p>
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+                    <h7>ABOUT</h7>
+                </div>
             </div>
         </section>
-    </footer>
+        <section class="features">
+            <div class="container">
+                <div class="feature">
+						<h2><u>Project</u></h2>
+						<h3>This project started because I wanted to make it easy for people to read news from different places in one simple place.<br><br>I talked to a friend about how many people now get their news online.<br>We thought it would be helpful to create a website or app where you can find news from lots of different places easily.<br><br>My friend told me about APIs, which are tools that developers use to add features to websites.These APIs can help users stay updated with what's happening in the world.<br><br>"NewsHub" is a project that aims to meet the different needs and preferences of its users.<br><br>When the opportunity came to build the project as a Portfolio Project for <a href="https://www.holbertonschool.com">Holberton School</a>, it became a challenge because my friend was busy with another project, so I had to work on it alone.<br><br>I had about a month to finish the project, with weekly goals to achieve.<br><br>It was tough to meet the deadlines and accomplish the plans.<br>I used resources from various places to build the project.<br><br>While there's still room for improvement and updates, I'm thankful that the project was successful.<br>Now you have NewsHub, designed to give you easy access to news at your fingertips.</h3>
+				</div>
+				<div class='feature'>
+                    <h2><u>Developer</u></h2>
+				<div class="image">
+					<img src="static/images/img_5.jpg" alt="News">
+				</div>
+					<h3>Temilade Dauda holds an HND in Computer Science and currently in the ninth month of the twelve month Software Engineering program at ALX.<br><br>Alongside my academic pursuits, I am a proficient minstrel and hold a deep devotion to spiritual matters, serving as a seasoned teacher of the word.<br><br>In my professional capacity, I am engaged as a freelance Administrative Assistant, leveraging my organizational skills to support various projects.<br><br>Additionally, I dedicate my time as a volunteer contributor to the annual devotional book "Food for the Journey," where I actively participate in its creation and dissemination.<br><br>Connect via these handles:</h3>
+                <div class="handle">
+                    <a href="https://wa.me/message/BUPMLODTS3ZXM1" target="_blank" rel="noopener noreferrer">
+                        <img src="static/images/img_6.jpg" alt="WhatsApp">
+                    </a>
+                    <a href="https://www.facebook.com/temmy4realboyz" target="_blank" rel="noopener noreferrer">
+                        <img src="static/images/img_9.jpg" alt="Facebook">
+                    </a>
+                    <a href="https://www.linkedin.com/in/dauda-temilade-121294111/" target="_blank" rel="noopener noreferrer">
+                        <img src="static/images/img_8.jpg" alt="LinkedIn">
+                    </a>
+                    <a href="https://github.com/dtemilade">
+                        <img src="static/images/img_7.jpg" alt="Github">
+                    </a>
+                </div>
+			</div>
+		</section>
+    </main>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

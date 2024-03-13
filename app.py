@@ -1,11 +1,14 @@
-from datetime import datetime
+from newsapi import NewsApiClient   
+from datetime import datetime, timedelta
 from flask_login import current_user, login_required, login_user, logout_user, LoginManager, UserMixin
 from flask import Flask, jsonify, request, render_template, redirect, url_for, session, flash
+from twilio.rest import Client
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 import requests
+import random
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///myapp.db')
@@ -15,7 +18,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'temi@1992')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
-NEWS_API_KEY = os.environ.get('NEWS_API_KEY', '8e87a00915424e79b05acecb9cdc03e8')
+NEWS_API_KEY = os.environ.get('NEWS_API_KEY', '3fab37f0129b49cf8f3f922937b81368')
 NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
 
 # User model definition
@@ -124,7 +127,7 @@ def news():
         return redirect(url_for('login'))
     
     try:
-        country = 'us'
+        country = 'ng'
         category = None
         params = {'country': country, 'apiKey': NEWS_API_KEY}
 
@@ -143,11 +146,16 @@ def news():
     except Exception as e:
         return render_template('error.html')
 
+@app.before_request
+def update_session():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=5)
+    session['last_activity'] = datetime.now()
+
 @app.route('/logout')
 @login_required
 def logout():
-    if 'logged_in' in session:
-        session.pop('logged_in', None)
+    session.pop('logged_in', None)
     logout_user()
     return redirect(url_for('login'))
 

@@ -40,8 +40,8 @@
         <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}"><br>
         <label for="address">Address:</label><br>
         <input type="text" id="address" name="address" value="{{ user.address }}"><br>
-        <label for="telephone">Telephone:</label><br>
-        <input type="tel" id="telephone" name="telephone" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" value="{{ user.telephone }}"><br>
+        <label for="phone_number">phone_number:</label><br>
+        <input type="tel" id="phone_number" name="phone_number" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" value="{{ user.phone_number }}"><br>
         <label for="gender">Gender:</label><br>
         <select id="gender" name="gender">
             <option value="male" {% if user.gender == 'male' %} selected {% endif %}>Male</option>

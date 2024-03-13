@@ -35,7 +35,7 @@
 				<th>Fullname</th>
                 <th>Birthdate</th>
                 <th>Address</th>
-                <th>Telephone</th>
+                <th>phone_number</th>
 				<th>Email</th>
                 <th>Gender</th>
                 <th>Action</th>
@@ -48,7 +48,7 @@
 					<td>{{ user.fullname }}</td>
                     <td>{{ user.birthdate }}</td>
                     <td>{{ user.address }}</td>
-                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.phone_number }}</td>
 					<td>{{ user.email }}</td>
                     <td>{{ user.gender }}</td>
                     <td><a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a></td>
