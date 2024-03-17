@@ -1,6 +1,4 @@
-#generate more api keys using emails
-#let automatic logout redirect to login page and let country and category first be selected before showing news
-
+# Import necessary libraries
 from newsapi import NewsApiClient   
 from datetime import datetime, timedelta
 from flask_login import current_user, login_required, login_user, logout_user, LoginManager, UserMixin
@@ -13,17 +11,22 @@ import os
 import requests
 import random
 
+# Initialize Flask application
 app = Flask(__name__)
+
+# Configure database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///myapp.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'temi@1992')
 
+# Initialize database
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
+# Define the endpoint for fetching news from the NewsAPI
 NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
 
-# User model definition
+# Define the User model for database
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -35,14 +38,17 @@ class User(UserMixin, db.Model):
     telephone = db.Column(db.String(20), nullable=False)
     gender = db.Column(db.String(10), nullable=True)
 
+# Function to load a user from the database
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+# Route for the homepage
 @app.route('/')
 def home():
     return render_template('home.html')
 
+# Route for user login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -53,18 +59,20 @@ def login():
         if user and check_password_hash(user.password, password):
             session['logged_in'] = True
             login_user(user)
-            return redirect(url_for('news'))
+            return redirect(url_for('news'))  # Redirect to news page after successful login
         else:
             flash('Invalid Username or Password')
             return redirect(url_for('login'))
 
     return render_template('login.html')
 
+# Route for protected content, requires login
 @app.route('/protected')
 @login_required
 def protected_route():
     return f'Hello, {current_user.username}!'
 
+# Route for user registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -121,8 +129,7 @@ def register():
 
     return render_template('register.html')
 
-
-
+# Route for fetching and displaying news
 @app.route('/news', methods=['GET', 'POST'])
 def news():
     if 'logged_in' not in session:
@@ -163,8 +170,7 @@ def news():
     except Exception as e:
         return render_template('error.html')
 
-
-
+# Function to update session and set session timeout
 @app.before_request
 def update_session():
     session.permanent = True
@@ -174,29 +180,39 @@ def update_session():
 @app.route('/logout')
 @login_required
 def logout():
+    # Remove 'logged_in' from session to log out
     session.pop('logged_in', None)
+    # Log out user
     logout_user()
+    # Redirect to login page
     return redirect(url_for('login'))
 
 @app.route('/view_users', methods=['GET', 'POST'])
 def view_users():
     if request.method == 'POST':
+        # Get delete password from form
         del_password = request.form['del_password']
+        # Hash correct password
         correct_password_hash = generate_password_hash("admin123")
 
         if check_password_hash(correct_password_hash, del_password):
+            # Fetch all users from database
             users = User.query.all()
+            # Display users
             return render_template('view_users.html', users=users)
         else:
+            # If password is incorrect, show error message and redirect to view_users
             flash('Access Denied, ADMIN ONLY.', 'error')
             return redirect(url_for('view_users'))
 
+    # If it's a GET request or invalid POST request, render access denied template
     users = []
     return render_template('view_users_access.html')
 
 @app.route('/profile')
 @login_required
 def profile():
+    # Display profile of current user
     users = [current_user]
     return render_template('profile.html', users=users)
 
@@ -204,6 +220,7 @@ def profile():
 def update_user(user_id):
     user = User.query.get(user_id)
     if request.method == 'POST':
+        # Get updated user details from form
         new_username = request.form['username']
         new_password = request.form['password']
         new_fullname = request.form['fullname']
@@ -214,6 +231,7 @@ def update_user(user_id):
         new_telephone = request.form['telephone']
         new_gender = request.form['gender']
         
+        # Update user details if provided
         if new_username:
             user.username = new_username
         if new_password:
@@ -231,42 +249,57 @@ def update_user(user_id):
         if new_gender:
             user.gender = new_gender
             
+        # Commit changes to database
         db.session.commit()
+        # Flash success message and redirect to profile
         flash('User details updated successfully!', 'success')
         return redirect(url_for('profile'))
     
+    # Render update_user template
     return render_template('update_user.html', user=user)
 
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
     if request.method == 'POST':
+        # Get username, email, and new password from form
         username = request.form['username']
         email = request.form['email']
         new_password = request.form['password']
 
+        # Find user by username and email
         user = User.query.filter_by(username=username, email=email).first()
 
         if user:
             # Change the password for the user
             user.password = generate_password_hash(new_password)
+            # Commit changes to database
             db.session.commit()
+            # Flash success message and redirect to login
             flash('Password changed successfully!', 'success')
             return redirect(url_for('login'))
         else:
+            # If user not found, show error message and redirect to reset_password
             flash('Invalid username or email.', 'error')
             return redirect(url_for('reset_password'))
 
+    # Render reset_password template
     return render_template('reset_password.html')
 
 @app.route('/delete_user/<int:user_id>')
 def delete_user(user_id):
+    # Find user by ID
     user = User.query.get(user_id)
+    # Delete user from database
     db.session.delete(user)
+    # Commit changes to database
     db.session.commit()
+    # Flash success message and redirect to view_users
     flash('User deleted successfully!', 'success')
     return redirect(url_for('view_users'))
 
 if __name__ == '__main__':
     with app.app_context():
+        # Create necessary tables
         db.create_all()
+    # Run the Flask app
     app.run(host='0.0.0.0', port=10000, debug=True)

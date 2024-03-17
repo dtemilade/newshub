@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Page</title>
     <!-- My CSS script -->
+    <!-- Linking the CSS file for styling -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -13,6 +14,7 @@
             <div class="container">
                 <div class="logo"> </div>
                 <ul class="nav-links">
+                    <!-- Navigation links -->
                     <li><a href="/">Home</a></li>
                     <li><a href="/logout">Logout</a></li>
                     <li><a href="/profile">Profile</a></li>
@@ -21,14 +23,16 @@
             </div>
         </nav>
     </header>
-        <section class="hero">
-            <div class="hero-content">
-				    <h1>Error Occurred</h1>
-					<p>An error occurred while fetching news headlines. Please try again later.</p>
-            </div>
-        </section>
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Displaying error message -->
+            <h1>Error Occurred</h1>
+            <p>An error occurred while fetching news headlines. Please try again later.</p>
+        </div>
+    </section>
 
-<!-- My JS script -->
+    <!-- My JS script -->
+    <!-- Linking the JavaScript file for dynamic functionalities -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

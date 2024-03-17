@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+<!-- This section defines the hero section of the webpage -->
 <section class="hero">
     <div class="hero-content">
         <p>Welcome, {{ current_user.username }}!</p>
@@ -18,9 +19,10 @@
     </div>
 </section>
 
-<!-- News selection form -->
+	<!-- This section defines the form for selecting news preferences -->
 <form action="{{ url_for('news') }}" method="GET" class="container" id="news-form">
     <label for="country">Select Country:</label>
+	<!-- Dropdown menu for selecting country -->
     <select name="country" id="country">
         <option value="us" {% if request.args.get('country') == 'us' %} selected {% endif %}>United State</option>
         <option value="ng" {% if request.args.get('country') == 'ng' %} selected {% endif %}>Nigeria</option>
@@ -33,7 +35,8 @@
         <option value="mar" {% if request.args.get('country') == 'mar' %} selected {% endif %}>Morocco</option>
     </select>
 
-    <label for="category">Select Category:</label>
+    <!-- The section below is for selecting a news category -->
+	<label for="category">Select Category:</label>
     <select name="category" id="category">
         <option value="business" {% if request.args.get('category') == 'business' %} selected {% endif %}>Business</option>
         <option value="entertainment" {% if request.args.get('category') == 'entertainment' %} selected {% endif %}>Entertainment</option>
@@ -50,6 +53,7 @@
     <p>Session Timeout in <span id="timeout-counter"></span> seconds</p>
 </div>
 
+<!-- List to display news headlines -->
 <ul>
     {% if headlines %}
         {% for headline in headlines %}
@@ -62,7 +66,7 @@
             </li>
         {% endfor %}
     {% else %}
-        <li>No news available.</li>
+        <li>No news available.</li> <!-- Message displayed if no news available -->
     {% endif %}
 </ul>
 

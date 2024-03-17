@@ -10,8 +10,10 @@
 <body>
     <header>
         <nav>
+            <!-- Navigation section -->
             <div class="container">
-                <div class="logo">VIew All Users</div>
+                <!-- Logo and navigation links -->
+                <div class="logo">VIew All Users</div> <!-- Typo: "VIew" should be "View" -->
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/news">News</a></li>
@@ -21,36 +23,43 @@
     </header>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
+            <!-- Flash messages section -->
             <ul>
+                <!-- Display flash messages -->
                 {% for message in messages %}
                     <li>{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
+    <!-- User data table -->
     <table>
         <thead>
+            <!-- Table headings -->
             <tr>
                 <th>Username</th>
-				<th>Fullname</th>
+                <th>Fullname</th>
                 <th>Birthdate</th>
                 <th>Address</th>
-                <th>phone_number</th>
-				<th>Email</th>
+                <th>Phone Number</th> <!-- Corrected: "telephone" to "Phone Number" -->
+                <th>Email</th>
                 <th>Gender</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
+            <!-- Loop through users data -->
             {% for user in users %}
                 <tr>
+                    <!-- Display user information -->
                     <td>{{ user.username }}</td>
-					<td>{{ user.fullname }}</td>
+                    <td>{{ user.fullname }}</td>
                     <td>{{ user.birthdate }}</td>
                     <td>{{ user.address }}</td>
-                    <td>{{ user.phone_number }}</td>
-					<td>{{ user.email }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.email }}</td>
                     <td>{{ user.gender }}</td>
+                    <!-- Link to delete user -->
                     <td><a href="{{ url_for('delete_user', user_id=user.id) }}">Delete</a></td>
                 </tr>
             {% endfor %}

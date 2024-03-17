@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding and viewport settings -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the page -->
     <title>Register</title>
-    <!-- My CSS script -->
+    <!-- Link to custom CSS styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <!-- Header section containing navigation -->
     <header>
         <nav>
             <div class="container">
+                <!-- Logo with a title "Register" -->
                 <div class="logo">Register</div>
+                <!-- Navigation links -->
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/login">Login</a></li>					
@@ -19,6 +24,7 @@
             </div>
         </nav>
     </header>
+    <!-- Flash messages if any -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -28,14 +34,17 @@
             </ul>
         {% endif %}
     {% endwith %}
-        <section class="hero">
-            <div class="hero-content">
-				<h1>Create an account to enjoy our services.</h1>
-				<p>Please provide a valid email address!</p>
-            </div>
-        </section>
+    <!-- Hero section with a welcoming message -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Create an account to enjoy our services.</h1>
+            <p>Please provide a valid email address!</p>
+        </div>
+    </section>
 
+    <!-- Registration form -->
     <form action="{{ url_for('register') }}" method="POST">
+        <!-- Input fields for username, fullname, birthdate, address, telephone, email, password, and gender -->
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br>
         <label for="fullname">Fullname:</label><br>
@@ -45,26 +54,32 @@
         <label for="address">Address:</label><br>
         <input type="text" id="address" name="address"><br>
         <label for="telephone">Telephone:</label><br>
+        <!-- Input field for telephone number with a specific pattern -->
         <input type="tel" id="telephone" name="telephone" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" required><br>
         <label for="email">Email:</label><br>
         <input type="text" id="email" name="email" required><br>
         <label for="password">Password:</label><br>
+        <!-- Input field for password -->
         <input type="password" id="password" name="password" required><br>
         <label for="gender">Gender:</label><br>
+        <!-- Dropdown for selecting gender -->
         <select id="gender" name="gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
         </select><br>
+        <!-- Button to submit the form -->
         <input type="submit" value="Register">
     </form>
-        <section class="hero">
-            <div class="hero-content">
-				<p>Already have an account? <a href="{{ url_for('login') }}">Login</a>.</p>
-            </div>
-        </section>
+    
+    <!-- Hero section with a message for already registered users -->
+    <section class="hero">
+        <div class="hero-content">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login</a>.</p>
+        </div>
+    </section>
 
-    <!-- My JS script -->
+    <!-- Link to custom JavaScript script -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

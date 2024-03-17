@@ -1,31 +1,37 @@
 /* General Styles */
+
+/* Setting basic styles for the body of the webpage */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
+/* Styles for the main container of the webpage */
 .container {
     max-width: 1200px;
-	display: flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-	position: center;
-    margin: 0 auto;
+    position: center; /* Centering the container */
+    margin: 0 auto; /* Margin to center horizontally */
     padding: 0 20px;
 }
 
 /* Header Styles */
+
+/* Styles for the header section of the webpage */
 header {
-	background-color: #007bff;
-	padding: 3px;
+    background-color: #007bff; /* Setting background color */
+    padding: 3px;
     color: #fff;
-	text-align: center;
-	top: 0;
-	left: 0;
-	right: 0;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
+/* Styles for the logo in the header */
 .logo {
     font-size: 24px;
     font-weight: bold;
@@ -42,7 +48,7 @@ header {
     height: 50px;
 }
 
-
+/* Styles for the navigation links */
 .nav-links {
     list-style: none;
     padding: 0;
@@ -61,21 +67,23 @@ header {
 }
 
 .nav-links li a:hover {
-    color: #ffd700; 
+    color: #ffd700; /* Color change on hover */
+
 }
 
 /* Main Content Styles */
+
+/* Styles for the main content section */
 main {
-    
-	position: center;
-	
+    position: center; /* Centering the main content */
 }
 
+/* Styles for the timeout notification */
 timeout-notification {
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 50%; /* Centering horizontally */
+    transform: translateX(-50%); /* Centering horizontally */
     background-color: #ff9800;
     color: #fff;
     padding: 10px;
@@ -84,6 +92,7 @@ timeout-notification {
     z-index: 999;
 }
 
+/* Styles for the hero content */
 .hero-content {
     text-align: center;
 }
@@ -94,10 +103,11 @@ timeout-notification {
 }
 
 .hero-content h7 {
-	font-family: Arial black;
+    font-family: Arial black;
     font-size: 50px;
 }
 
+/* Styles for the features section */
 .features {
     display: flex;
     justify-content: space-between;
@@ -134,15 +144,15 @@ timeout-notification {
 }
 
 .feature h3 {
-	text-align: justify;
-	text-decoration: blue;
+    text-align: justify; /* Justifying text */
+    text-decoration: blue; /* Adding blue color to text */
     font-size: 24px;
     margin-bottom: 10px;
 }
 
 .feature h7 {
     font-size: 50px;
-	font-family: Arial black;
+    font-family: Arial black;
 }
 
 .feature p {
@@ -151,9 +161,11 @@ timeout-notification {
 }
 
 /* Form Styles */
+
+/* Styles for forms */
 form {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centering horizontally */
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -166,6 +178,7 @@ form label {
     font-weight: bold;
 }
 
+/* Styles for form inputs */
 form input[type="text"],
 form input[type="password"],
 form input[type="date"],
@@ -210,22 +223,23 @@ form p a:hover {
 }
 
 /* Footer Styles */
+
+/* Styles for the footer */
 footer {
     background-color: #007bff;
     color: #fff;
     padding: 5px 0;
-	text-align: center;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-
+    text-align: center;
+    position: fixed; /* Fixing the footer to the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 footer h3 {
     margin: 0;
     font-size: 15px;
-    text-align: center;	
+    text-align: center;
 }
 
 footer p {

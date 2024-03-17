@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- My CSS script -->
+    <!-- Including a CSS file called 'styles.css' -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <nav>
+            <!-- Navigation section -->
             <div class="container">
                 <div class="logo">Login</div>
+                <!-- List of navigation links -->
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/register">Register</a></li>					
@@ -21,42 +24,54 @@
     </header>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
+            <!-- Flash message section -->
             <ul>
                 {% for message in messages %}
+                    <!-- Displaying flash messages -->
                     <li>{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
-        <section class="hero">
-            <div class="hero-content">
-				<h1>Login to access personalized content.</h1>
-            </div>
-        </section>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Main heading of the page -->
+            <h1>Login to access personalized content.</h1>
+        </div>
+    </section>
+    <!-- Login form -->
     <form action="{{ url_for('login') }}" method="POST">
         <label for="username">Username:</label><br>
+        <!-- Input field for username -->
         <input type="text" id="username" name="username" required><br>
         <label for="password">Password:</label><br>
+        <!-- Input field for password -->
         <input type="password" id="password" name="password" required><br>
+        <!-- Submit button for logging in -->
         <input type="submit" value="Login">
     </form>
-        <section class="hero">
-            <div class="hero-content">
-				<a href="{{ url_for('reset_password') }}">Forgot your password?</a>
-				<p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
-            </div>
-        </section>
-		
+    <!-- Additional options for users -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Link for resetting password -->
+            <a href="{{ url_for('reset_password') }}">Forgot your password?</a>
+            <!-- Link for registering a new account -->
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.</p>
+        </div>
+    </section>
     <footer>
+        <!-- Footer section -->
         <section class="hero">
             <div class="hero-content">
                 <p><br></p>
-				<h3>Positive updates from distant sources are akin to refreshing water for those yearning for it.</h>
-				<p><br>&copy; 2024 NewsHub. All rights reserved.</p>
+                <!-- Inspirational quote -->
+                <h3>Positive updates from distant sources are akin to refreshing water for those yearning for it.</h3>
+                <!-- Copyright information -->
+                <p><br>&copy; 2024 NewsHub. All rights reserved.</p>
             </div>
         </section>
     </footer>
-
     <!-- My JS script -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

@@ -4,53 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update User</title>
-    <!-- My CSS script -->
+    <!-- My CSS script --> <!-- Including external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
         <nav>
             <div class="container">
-                <div class="logo">Update Profile</div>
+                <div class="logo">Update Profile</div> <!-- Logo and navigation menu -->
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
                     <li><a href="/news">News</a></li>
-                    <li><a href="/logout">Logout</a></li>					
+                    <li><a href="/logout">Logout</a></li> <!-- Links for home, news, and logout -->
                 </ul>
             </div>
         </nav>
     </header>
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages() %} <!-- Handling flashed messages -->
         {% if messages %}
             <ul>
                 {% for message in messages %}
-                    <li>{{ message }}</li>
+                    <li>{{ message }}</li> <!-- Displaying flashed messages -->
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
-    <form action="" method="post">
+    <form action="" method="post"> <!-- Form for updating user profile -->
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" value="{{ user.username }}"><br>
+        <input type="text" id="username" name="username" value="{{ user.username }}"><br> <!-- Input field for username -->
         <label for="fullname">Fullname:</label><br>
-        <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}"><br>
+        <input type="text" id="fullname" name="fullname" value="{{ user.fullname }}"><br> <!-- Input field for fullname -->
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+        <input type="email" id="email" name="email" value="{{ user.email }}"><br> <!-- Input field for email -->
         <label for="birthdate">Birthdate:</label><br>
-        <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}"><br>
+        <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate }}"><br> <!-- Input field for birthdate -->
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address" value="{{ user.address }}"><br>
-        <label for="phone_number">phone_number:</label><br>
-        <input type="tel" id="phone_number" name="phone_number" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" value="{{ user.phone_number }}"><br>
+        <input type="text" id="address" name="address" value="{{ user.address }}"><br> <!-- Input field for address -->
+        <label for="telephone">telephone:</label><br>
+        <input type="tel" id="telephone" name="telephone" pattern="\+[0-9]{3}-[0-9]{10}" placeholder="+234-8099999999" value="{{ user.telephone }}"><br> <!-- Input field for phone number with pattern -->
         <label for="gender">Gender:</label><br>
-        <select id="gender" name="gender">
+        <select id="gender" name="gender"> <!-- Select dropdown for gender -->
             <option value="male" {% if user.gender == 'male' %} selected {% endif %}>Male</option>
             <option value="female" {% if user.gender == 'female' %} selected {% endif %}>Female</option>
             <option value="other" {% if user.gender == 'other' %} selected {% endif %}>Other</option>
         </select><br>
-        <button type="submit">Update</button>
+        <button type="submit">Update</button> <!-- Button to submit form -->
     </form>
-    <!-- My JS script -->
+    <!-- My JS script --> <!-- Including external JavaScript file -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

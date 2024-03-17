@@ -5,54 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <!-- My CSS script -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Linking to external CSS file -->
 </head>
 <body>
         <section class="hero">
             <div class="hero-content">
-				<h1>{{ current_user.username }} Profile</h1>
-				<a href="{{ url_for('update_user', user_id=current_user.id) }}">Update</a> | <a href="{{ url_for('home') }}">GoToHome</a> | <a href="{{ url_for('news') }}">News</a>
+				<h1>{{ current_user.username }} Profile</h1> <!-- Displaying the current user's username -->
+				<a href="{{ url_for('update_user', user_id=current_user.id) }}">Update</a> | <a href="{{ url_for('home') }}">GoToHome</a> | <a href="{{ url_for('news') }}">News</a> <!-- Links for updating profile, going back to home, and viewing news -->
             </div>
         </section>
 
         <section class="features">
             <div class="container">
                 <div class="feature">
-				<table>
+				<table> <!-- Creating a table to display user information -->
 					<thead>
 						<tr>
-							<th> </th>
-							<th> </th>
+							<th> </th> <!-- Table header column for labels -->
+							<th> </th> <!-- Table header column for values -->
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>Username:</td>
-							<td>{{ current_user.username }}</td>
+							<td>Username:</td> <!-- Label for username -->
+							<td>{{ current_user.username }}</td> <!-- Displaying the current user's username -->
 						</tr>
 						<tr>
-							<td>Fullname:</td>
-							<td>{{ current_user.fullname }}</td>
+							<td>Fullname:</td> <!-- Label for fullname -->
+							<td>{{ current_user.fullname }}</td> <!-- Displaying the current user's fullname -->
 						</tr>
 						<tr>
-							<td>Email:</td>
-							<td>{{ current_user.email }}</td>
+							<td>Email:</td> <!-- Label for email -->
+							<td>{{ current_user.email }}</td> <!-- Displaying the current user's email -->
 						</tr>
 						<tr>
-							<td>Birthdate:</td>
-							<td>{{ current_user.birthdate }}</td>
+							<td>Birthdate:</td> <!-- Label for birthdate -->
+							<td>{{ current_user.birthdate }}</td> <!-- Displaying the current user's birthdate -->
 						</tr>
 						<tr>
-							<td>Address:</td>
-							<td>{{ current_user.address }}</td>
+							<td>Address:</td> <!-- Label for address -->
+							<td>{{ current_user.address }}</td> <!-- Displaying the current user's address -->
 						</tr>
 						<tr>
-							<td>phone_number:</td>
-							<td>{{ current_user.phone_number }}</td>
+							<td>telephone:</td> <!-- Label for phone number -->
+							<td>{{ current_user.telephone }}</td> <!-- Displaying the current user's phone number -->
 						</tr>
 						<tr>
-							<td>Gender:</td>
-							<td>{{ current_user.gender }}</td>
+							<td>Gender:</td> <!-- Label for gender -->
+							<td>{{ current_user.gender }}</td> <!-- Displaying the current user's gender -->
 						</tr>
 					</tbody>
 				</table>
@@ -60,6 +60,6 @@
             </div>
         </section>
     <!-- My JS script -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script> <!-- Linking to external JavaScript file -->
 </body>
 </html>
