@@ -1,7 +1,4 @@
-#!/bin/bash
 # This is the readme file for the portfolio_project.
-# NewsHub
-
 <h1 align="center">NewsHub</h1>
 <p align="center">
   The best way to get news feed on the go!
