@@ -54,8 +54,7 @@ Login to access personalized content.
 
 ## Future
 
-There are plenty of features that I would love to implement into NewsHub.
-Adding more NEWSAPIs. Along with this, adding more features to keep users motivated and engaged such as alerts and notifications as well as featuring authentication means to strenghten the security.
+While there's still room for improvement and updates of features that I would love to implement into NewsHub. Such as adding more NEWSAPIs and features to keep users motivated and engaged such as alerts and notifications as well as featuring authentication means to strenghten the security.
 
 If you have any suggestions or would like to contribute to NewsHub, please contact me.
 
@@ -74,7 +73,4 @@ Additionally, I dedicate my time as a volunteer contributor to the annual devoti
 
 <a href="https://www.linkedin.com/in/dauda-temilade-121294111/">
     <img src="static/images/img_8.jpg" alt="LinkedIn">
-</a>
-<a href="https://www.facebook.com/temmy4realboyz">
-    <img src="static/images/img_9.jpg" alt="Facebook">
 </a>
