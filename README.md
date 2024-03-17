@@ -54,7 +54,7 @@ Login to access personalized content.
 
 ## Future
 
-While there's still room for improvement and updates of features that I would love to implement into NewsHub. Such as adding more NEWSAPIs and features to keep users motivated and engaged such as alerts and notifications as well as featuring authentication means to strenghten the security.
+While there's still room for improvement and updates of features that I would love to implement into NewsHub. Such as adding more NEWSAPIs and features to keep users motivated and engaged. Also, I intend to add authentication method for user verification.
 
 If you have any suggestions or would like to contribute to NewsHub, please contact me.
 
