@@ -8,16 +8,50 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-        <section class="hero">
-            <div class="hero-content">
-				<h1>Latest News Headlines</h1>
-				<p>Welcome, {{ current_user.username }}!</p>
-				<a href="{{ url_for('logout') }}">Logout</a>
-				<a href="{{ url_for('home') }}">GoToHome</a>
-				<a href="{{ url_for('profile', user_id=current_user.id) }}">My Profile</a>
-            </div>
-        </section>
-    <ul>
+<section class="hero">
+    <div class="hero-content">
+        <p>Welcome, {{ current_user.username }}!</p>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('home') }}">GoToHome</a>
+        <a href="{{ url_for('profile', user_id=current_user.id) }}">My Profile</a>
+        <h1><br>Choose News Preferences below</h1>
+    </div>
+</section>
+
+<!-- News selection form -->
+<form action="{{ url_for('news') }}" method="GET" class="container" id="news-form">
+    <label for="country">Select Country:</label>
+    <select name="country" id="country">
+        <option value="us" {% if request.args.get('country') == 'us' %} selected {% endif %}>United State</option>
+        <option value="ng" {% if request.args.get('country') == 'ng' %} selected {% endif %}>Nigeria</option>
+        <option value="zaf" {% if request.args.get('country') == 'zaf' %} selected {% endif %}>South Africa</option>
+        <option value="ken" {% if request.args.get('country') == 'ken' %} selected {% endif %}>Kenya</option>
+        <option value="gha" {% if request.args.get('country') == 'gha' %} selected {% endif %}>Ghana</option>
+        <option value="rwa" {% if request.args.get('country') == 'rwa' %} selected {% endif %}>Rwanda</option>
+        <option value="egy" {% if request.args.get('country') == 'egy' %} selected {% endif %}>Egypt</option>
+        <option value="eth" {% if request.args.get('country') == 'eth' %} selected {% endif %}>Ethiopia</option>
+        <option value="mar" {% if request.args.get('country') == 'mar' %} selected {% endif %}>Morocco</option>
+    </select>
+
+    <label for="category">Select Category:</label>
+    <select name="category" id="category">
+        <option value="business" {% if request.args.get('category') == 'business' %} selected {% endif %}>Business</option>
+        <option value="entertainment" {% if request.args.get('category') == 'entertainment' %} selected {% endif %}>Entertainment</option>
+        <option value="general" {% if request.args.get('category') == 'general' %} selected {% endif %}>General</option>
+        <option value="health" {% if request.args.get('category') == 'health' %} selected {% endif %}>Health</option>
+        <option value="science" {% if request.args.get('category') == 'science' %} selected {% endif %}>Science</option>
+        <option value="technology" {% if request.args.get('category') == 'technology' %} selected {% endif %}>Technology</option>
+    </select>
+
+    <input type="submit" value="Get News">
+</form>
+
+<div id="timeout-notification" style="display: None;">
+    <p>Session Timeout in <span id="timeout-counter"></span> seconds</p>
+</div>
+
+<ul>
+    {% if headlines %}
         {% for headline in headlines %}
             <li>
                 <h2>{{ headline.title }}</h2>
@@ -27,7 +61,13 @@
                 <a href="{{ headline.url }}" target="_blank">Read More</a>
             </li>
         {% endfor %}
-    </ul>
-    <!-- My JS script -->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% else %}
+        <li>No news available.</li>
+    {% endif %}
+</ul>
+
+
+<!-- My JS script -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+</html>

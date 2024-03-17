@@ -1,3 +1,6 @@
+#generate more api keys using emails
+#let automatic logout redirect to login page and let country and category first be selected before showing news
+
 from newsapi import NewsApiClient   
 from datetime import datetime, timedelta
 from flask_login import current_user, login_required, login_user, logout_user, LoginManager, UserMixin
@@ -18,7 +21,6 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'temi@1992')
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
-NEWS_API_KEY = os.environ.get('NEWS_API_KEY', '3fab37f0129b49cf8f3f922937b81368')
 NEWS_API_ENDPOINT = 'https://newsapi.org/v2/top-headlines'
 
 # User model definition
@@ -121,18 +123,33 @@ def register():
 
 
 
-@app.route('/news')
+@app.route('/news', methods=['GET', 'POST'])
 def news():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
-    
-    try:
-        country = 'ng'
-        category = None
-        params = {'country': country, 'apiKey': NEWS_API_KEY}
 
-        if category:
-            params['category'] = category
+    try:
+        country = request.args.get('country')
+        category = request.args.get('category')
+
+        if not country or not category:
+            return render_template('news.html', current_user=current_user)
+
+        news_api_keys = {
+            'us': '8e87a00915424e79b05acecb9cdc03e8',
+            'ng': '3fab37f0129b49cf8f3f922937b81368',
+            'zaf': '8e87a00915424e79b05acecb9cdc03e8',
+            'ken': '8e87a00915424e79b05acecb9cdc03e8',
+            'gha': '3fab37f0129b49cf8f3f922937b81368',
+            'rwa': '8e87a00915424e79b05acecb9cdc03e8',
+            'egy': '3fab37f0129b49cf8f3f922937b81368',
+            'eth': '8e87a00915424e79b05acecb9cdc03e8',
+            'mar': '3fab37f0129b49cf8f3f922937b81368',
+        }
+
+        NEWS_API_KEY = os.environ.get(news_api_keys.get(country), '8e87a00915424e79b05acecb9cdc03e8')
+        
+        params = {'country': country, 'apiKey': NEWS_API_KEY, 'category': category}
 
         response = requests.get(NEWS_API_ENDPOINT, params=params)
 
@@ -145,6 +162,8 @@ def news():
 
     except Exception as e:
         return render_template('error.html')
+
+
 
 @app.before_request
 def update_session():
