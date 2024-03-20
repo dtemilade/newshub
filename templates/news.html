@@ -26,13 +26,9 @@
     <select name="country" id="country">
         <option value="us" {% if request.args.get('country') == 'us' %} selected {% endif %}>United State</option>
         <option value="ng" {% if request.args.get('country') == 'ng' %} selected {% endif %}>Nigeria</option>
-        <option value="zaf" {% if request.args.get('country') == 'zaf' %} selected {% endif %}>South Africa</option>
-        <option value="ken" {% if request.args.get('country') == 'ken' %} selected {% endif %}>Kenya</option>
-        <option value="gha" {% if request.args.get('country') == 'gha' %} selected {% endif %}>Ghana</option>
-        <option value="rwa" {% if request.args.get('country') == 'rwa' %} selected {% endif %}>Rwanda</option>
-        <option value="egy" {% if request.args.get('country') == 'egy' %} selected {% endif %}>Egypt</option>
-        <option value="eth" {% if request.args.get('country') == 'eth' %} selected {% endif %}>Ethiopia</option>
-        <option value="mar" {% if request.args.get('country') == 'mar' %} selected {% endif %}>Morocco</option>
+        <option value="za" {% if request.args.get('country') == 'za' %} selected {% endif %}>South Africa</option>
+        <option value="eg" {% if request.args.get('country') == 'eg' %} selected {% endif %}>Egypt</option>
+        <option value="ma" {% if request.args.get('country') == 'ma' %} selected {% endif %}>Morocco</option>
     </select>
 
     <!-- The section below is for selecting a news category -->

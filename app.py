@@ -85,7 +85,6 @@ def register():
         address = request.form['address']
         telephone = request.form['telephone']
         gender = request.form['gender']
-
         # Validate and process registration
         if not username or not password or not fullname:
             flash('Username, password, and fullname are required.', 'error')
@@ -100,11 +99,9 @@ def register():
                     birthdate = datetime.strptime(birthdate_str, '%Y-%m-%d').date()
                 except ValueError:
                     flash('Invalid birthdate format. Please use YYYY-MM-DD.', 'error')
-                    return redirect(url_for('register'))  # Redirect back to registration page
-                
+                    return redirect(url_for('register'))  # Redirect back to registration page                
                 # Hash the password
-                hashed_password = generate_password_hash(password)
-                
+                hashed_password = generate_password_hash(password)                
                 # Create a new user object
                 new_user = User(
                     username=username, 
@@ -116,7 +113,6 @@ def register():
                     telephone=telephone,
                     gender=gender
                 )
-
                 # Add new user to the database
                 db.session.add(new_user)
                 try:
@@ -134,26 +130,18 @@ def register():
 def news():
     if 'logged_in' not in session:
         return redirect(url_for('login'))
-
     try:
         country = request.args.get('country')
         category = request.args.get('category')
-
         if not country or not category:
             return render_template('news.html', current_user=current_user)
-
         news_api_keys = {
             'us': '8e87a00915424e79b05acecb9cdc03e8',
             'ng': '3fab37f0129b49cf8f3f922937b81368',
-            'zaf': '8e87a00915424e79b05acecb9cdc03e8',
-            'ken': '8e87a00915424e79b05acecb9cdc03e8',
-            'gha': '3fab37f0129b49cf8f3f922937b81368',
-            'rwa': '8e87a00915424e79b05acecb9cdc03e8',
-            'egy': '3fab37f0129b49cf8f3f922937b81368',
-            'eth': '8e87a00915424e79b05acecb9cdc03e8',
-            'mar': '3fab37f0129b49cf8f3f922937b81368',
+            'za': '42b8de2e960e48be84114e6a321edefe',
+            'eg': 'ae8097cbbb1b4a119002c880620e8781',
+            'ma': 'bbe102eaae2e4e9e9964943b14cc0f2a',
         }
-
         NEWS_API_KEY = os.environ.get(news_api_keys.get(country), '8e87a00915424e79b05acecb9cdc03e8')
         
         params = {'country': country, 'apiKey': NEWS_API_KEY, 'category': category}
@@ -166,7 +154,6 @@ def news():
             return render_template('news.html', headlines=headlines, current_user=current_user)
         else:
             return render_template('error.html')
-
     except Exception as e:
         return render_template('error.html')
 
