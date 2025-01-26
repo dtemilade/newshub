@@ -180,7 +180,7 @@ def view_users():
         # Get delete password from form
         del_password = request.form['del_password']
         # Hash correct password
-        correct_password_hash = generate_password_hash("admin123")
+        correct_password_hash = generate_password_hash("08099603143")
 
         if check_password_hash(correct_password_hash, del_password):
             # Fetch all users from database
