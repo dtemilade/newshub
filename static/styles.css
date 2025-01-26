@@ -242,6 +242,9 @@ footer h3 {
     text-align: center;
 }
 
+footer a {
+    text-decoration: none;
+}
 footer p {
     margin: 0;
     font-size: 12px;
