@@ -250,3 +250,19 @@ footer p {
     font-size: 12px;
     text-align: center;
 }
+
+@media screen and (max-width:700px){
+form {
+    max-width: 100%;
+}
+   a, p, button, h3, ul li, h2{
+        font-size: 0.5em;
+    }
+    img {
+    max-width: 100%;
+}
+    h3{
+        max-width: 90%;
+    }
+
+}
